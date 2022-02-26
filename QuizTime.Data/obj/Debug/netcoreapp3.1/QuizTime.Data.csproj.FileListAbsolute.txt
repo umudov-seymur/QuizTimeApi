@@ -1,0 +1,15 @@
+C:\laragon\www\QuizTimeApi\QuizTime.Data\bin\Debug\netcoreapp3.1\QuizTime.Data.deps.json
+C:\laragon\www\QuizTimeApi\QuizTime.Data\bin\Debug\netcoreapp3.1\QuizTime.Data.dll
+C:\laragon\www\QuizTimeApi\QuizTime.Data\bin\Debug\netcoreapp3.1\QuizTime.Data.pdb
+C:\laragon\www\QuizTimeApi\QuizTime.Data\bin\Debug\netcoreapp3.1\Quiztime.Core.dll
+C:\laragon\www\QuizTimeApi\QuizTime.Data\bin\Debug\netcoreapp3.1\Quiztime.Core.pdb
+C:\laragon\www\QuizTimeApi\QuizTime.Data\obj\Debug\netcoreapp3.1\QuizTime.Data.csproj.AssemblyReference.cache
+C:\laragon\www\QuizTimeApi\QuizTime.Data\obj\Debug\netcoreapp3.1\QuizTime.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\laragon\www\QuizTimeApi\QuizTime.Data\obj\Debug\netcoreapp3.1\QuizTime.Data.AssemblyInfoInputs.cache
+C:\laragon\www\QuizTimeApi\QuizTime.Data\obj\Debug\netcoreapp3.1\QuizTime.Data.AssemblyInfo.cs
+C:\laragon\www\QuizTimeApi\QuizTime.Data\obj\Debug\netcoreapp3.1\QuizTime.Data.csproj.CoreCompileInputs.cache
+C:\laragon\www\QuizTimeApi\QuizTime.Data\obj\Debug\netcoreapp3.1\QuizTime.Data.dll
+C:\laragon\www\QuizTimeApi\QuizTime.Data\obj\Debug\netcoreapp3.1\QuizTime.Data.pdb
+C:\laragon\www\QuizTimeApi\QuizTime.Data\bin\Debug\netcoreapp3.1\QuizTime.Data.runtimeconfig.json
+C:\laragon\www\QuizTimeApi\QuizTime.Data\bin\Debug\netcoreapp3.1\QuizTime.Data.runtimeconfig.dev.json
+C:\laragon\www\QuizTimeApi\QuizTime.Data\obj\Debug\netcoreapp3.1\QuizTime.Data.genruntimeconfig.cache

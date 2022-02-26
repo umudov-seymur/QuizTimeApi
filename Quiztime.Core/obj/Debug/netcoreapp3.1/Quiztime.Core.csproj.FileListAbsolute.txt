@@ -1,0 +1,10 @@
+C:\laragon\www\QuizTimeApi\Quiztime.Core\bin\Debug\netcoreapp3.1\Quiztime.Core.deps.json
+C:\laragon\www\QuizTimeApi\Quiztime.Core\bin\Debug\netcoreapp3.1\Quiztime.Core.dll
+C:\laragon\www\QuizTimeApi\Quiztime.Core\bin\Debug\netcoreapp3.1\Quiztime.Core.pdb
+C:\laragon\www\QuizTimeApi\Quiztime.Core\obj\Debug\netcoreapp3.1\Quiztime.Core.csproj.AssemblyReference.cache
+C:\laragon\www\QuizTimeApi\Quiztime.Core\obj\Debug\netcoreapp3.1\Quiztime.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\laragon\www\QuizTimeApi\Quiztime.Core\obj\Debug\netcoreapp3.1\Quiztime.Core.AssemblyInfoInputs.cache
+C:\laragon\www\QuizTimeApi\Quiztime.Core\obj\Debug\netcoreapp3.1\Quiztime.Core.AssemblyInfo.cs
+C:\laragon\www\QuizTimeApi\Quiztime.Core\obj\Debug\netcoreapp3.1\Quiztime.Core.csproj.CoreCompileInputs.cache
+C:\laragon\www\QuizTimeApi\Quiztime.Core\obj\Debug\netcoreapp3.1\Quiztime.Core.dll
+C:\laragon\www\QuizTimeApi\Quiztime.Core\obj\Debug\netcoreapp3.1\Quiztime.Core.pdb
