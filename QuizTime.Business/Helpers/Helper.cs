@@ -9,12 +9,5 @@ namespace QuizTime.Business.Helpers
         public Helper()
         {
         }
-
-        public enum Roles
-        {
-            Admin,
-            Teacher,
-            Student
-        }
     }
 }
