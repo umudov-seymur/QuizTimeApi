@@ -11,6 +11,7 @@ namespace QuizTime.Data
         private readonly AppDbContext _context;
         private IQuizRepository _quizRepository;
         private IPasswordRepository _passwordRepository;
+        private ICategoryRepository _categoryRepository;
 
         public UnitOfWork(AppDbContext context)
         {
@@ -19,6 +20,7 @@ namespace QuizTime.Data
 
         public IQuizRepository QuizRepository => _quizRepository ??= new QuizRepository(_context);
         public IPasswordRepository PasswordRepository => _passwordRepository ??= new PasswordRepository(_context);
+        public ICategoryRepository CategoryRepository => _categoryRepository ??= new CategoryRepository(_context);
 
         public async Task SaveChangesAsync()
         {

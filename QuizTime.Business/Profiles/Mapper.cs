@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Quiztime.Core.Entities;
+using QuizTime.Business.DTOs.Category;
 using QuizTime.Business.DTOs.Quiz;
 using QuizTime.Business.DTOs.QuizPassword;
 
@@ -19,6 +20,9 @@ namespace QuizTime.Business.Profiles
                 .ForMember(x => x.Password, opt => opt.Ignore());
 
             CreateMap<QuizPasswordGetDto, Password>().ReverseMap();
+
+            CreateMap<Category, CategoryGetDto>()
+                .ForMember(d => d.QuizCount, opt => opt.MapFrom(src => src.Quizzes.Count));
         }
     }
 }

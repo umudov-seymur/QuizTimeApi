@@ -27,7 +27,7 @@ namespace QuizTime.Business.Services.Implementations
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<List<QuizGetForOwnerDto>> GetAllQuizzesync(QuizQuery query)
+        public async Task<List<QuizGetForOwnerDto>> GetAllQuizzesAsync(QuizQuery query)
         {
             var filters = GetQuizFilters(query);
             return _mapper.Map<List<QuizGetForOwnerDto>>(await _unitOfWork.QuizRepository.GetAllAsync(filters, "Password", "Category"));
@@ -69,7 +69,7 @@ namespace QuizTime.Business.Services.Implementations
             return _mapper.Map<QuizGetForOwnerDto>(quiz);
         }
 
-        public async Task<QuizGetForOwnerDto> GetQuizById(Guid id)
+        public async Task<QuizGetForOwnerDto> GetQuizByIdAsync(Guid id)
         {
             return _mapper.Map<QuizGetForOwnerDto>(await GetQuizOfOwner(id));
         }

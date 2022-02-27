@@ -11,8 +11,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace QuizTimeApi.Controllers
 {
     [Route("api/[controller]")]
@@ -21,26 +19,24 @@ namespace QuizTimeApi.Controllers
     public class QuizzesController : ControllerBase
     {
         private readonly IUnitOfWorkService _unitOfWorkService;
-        private readonly UserManager<AppUser> _userManager;
 
-        public QuizzesController(IUnitOfWorkService unitOfWorkService, UserManager<AppUser> userManager)
+        public QuizzesController(IUnitOfWorkService unitOfWorkService)
         {
             _unitOfWorkService = unitOfWorkService;
-            _userManager = userManager;
         }
 
         // GET: api/Quizzes
         [HttpGet]
         public async Task<List<QuizGetForOwnerDto>> Get([FromQuery] QuizQuery query)
         {
-            return await _unitOfWorkService.QuizService.GetAllQuizzesync(query);
+            return await _unitOfWorkService.QuizService.GetAllQuizzesAsync(query);
         }
 
         // GET api/Quizzes/5
         [HttpGet("{id:guid}")]
         public Task<QuizGetForOwnerDto> GetAsync(Guid id)
         {
-            return _unitOfWorkService.QuizService.GetQuizById(id);
+            return _unitOfWorkService.QuizService.GetQuizByIdAsync(id);
         }
 
         // POST api/Quizzes
