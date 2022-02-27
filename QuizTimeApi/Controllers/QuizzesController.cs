@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Quiztime.Core.Entities;
 using QuizTime.Business.DTOs.Quiz;
 using QuizTime.Business.DTOs.StatusCode;
+using QuizTime.Business.Exceptions;
 using QuizTime.Business.Queries;
 using QuizTime.Business.Services.Interfaces;
 using System;
@@ -34,9 +35,16 @@ namespace QuizTimeApi.Controllers
 
         // GET api/Quizzes/5
         [HttpGet("{id:guid}")]
-        public Task<QuizGetForOwnerDto> GetAsync(Guid id)
+        public async Task<ActionResult<QuizGetForOwnerDto>> GetAsync(Guid id)
         {
-            return _unitOfWorkService.QuizService.GetQuizByIdAsync(id);
+            try
+            {
+                return await _unitOfWorkService.QuizService.GetQuizByIdAsync(id);
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(new Response { Status = "Error", Message = ex.Message.ToString() });
+            }
         }
 
         // POST api/Quizzes

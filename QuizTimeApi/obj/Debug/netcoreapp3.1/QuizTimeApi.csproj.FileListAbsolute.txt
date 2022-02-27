@@ -88,3 +88,4 @@ C:\laragon\www\QuizTimeApi\QuizTimeApi\bin\Debug\netcoreapp3.1\Microsoft.Extensi
 C:\laragon\www\QuizTimeApi\QuizTimeApi\bin\Debug\netcoreapp3.1\MimeKit.dll
 C:\laragon\www\QuizTimeApi\QuizTimeApi\bin\Debug\netcoreapp3.1\NETCore.MailKit.dll
 C:\laragon\www\QuizTimeApi\QuizTimeApi\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\laragon\www\QuizTimeApi\QuizTimeApi\obj\Debug\netcoreapp3.1\QuizTimeApi.csproj.CopyComplete
