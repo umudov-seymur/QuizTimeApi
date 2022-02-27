@@ -55,7 +55,7 @@ namespace QuizTimeApi.Controllers
         }
 
         // PUT api/Quizzes/5
-        [HttpPut("{id}")]
+        [HttpPut("{id:guid}")]
         public async Task<ActionResult<QuizGetForOwnerDto>> Put(Guid id, [FromBody] QuizPutForOwnerDto quizPutDto)
         {
             try
@@ -70,7 +70,7 @@ namespace QuizTimeApi.Controllers
         }
 
         // DELETE api/Quizzes/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:guid}")]
         public async Task<IActionResult> DeleteAsync(Guid id)
         {
             try

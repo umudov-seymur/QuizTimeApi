@@ -32,6 +32,10 @@ namespace QuizTime.Business.Services.Implementations
             var filters = GetQuizFilters(query);
             return _mapper.Map<List<QuizGetForOwnerDto>>(await _unitOfWork.QuizRepository.GetAllAsync(filters, "Password", "Category"));
         }
+        public async Task<QuizGetForOwnerDto> GetQuizByIdAsync(Guid id)
+        {
+            return _mapper.Map<QuizGetForOwnerDto>(await GetQuizOfOwner(id));
+        }
 
         public async Task AddAsync(QuizPostForOwnerDto quizPostDto)
         {
@@ -67,11 +71,6 @@ namespace QuizTime.Business.Services.Implementations
             await _unitOfWork.SaveChangesAsync();
 
             return _mapper.Map<QuizGetForOwnerDto>(quiz);
-        }
-
-        public async Task<QuizGetForOwnerDto> GetQuizByIdAsync(Guid id)
-        {
-            return _mapper.Map<QuizGetForOwnerDto>(await GetQuizOfOwner(id));
         }
 
         public async Task DeleteAsync(Guid id)

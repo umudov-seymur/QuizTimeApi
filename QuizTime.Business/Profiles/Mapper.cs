@@ -23,6 +23,9 @@ namespace QuizTime.Business.Profiles
 
             CreateMap<Category, CategoryGetDto>()
                 .ForMember(d => d.QuizCount, opt => opt.MapFrom(src => src.Quizzes.Count));
+
+            CreateMap<CategoryPostDto, Category>();
+            CreateMap<CategoryPutDto, Category>();
         }
     }
 }
