@@ -49,9 +49,10 @@ namespace QuizTime.Data.Implementations
             return Task.CompletedTask;
         }
 
-        public void Delete(TEntity entity)
+        public Task DeleteAsync(TEntity entity)
         {
             _context.Set<TEntity>().Remove(entity);
+            return Task.CompletedTask;
         }
 
         public async Task<int> GetTotalCountAsync(Expression<Func<TEntity, bool>> filter = null)
@@ -74,7 +75,7 @@ namespace QuizTime.Data.Implementations
             {
                 foreach (var include in includes)
                 {
-                    query.Include(include);
+                    query = query.Include(include);
                 }
             }
 

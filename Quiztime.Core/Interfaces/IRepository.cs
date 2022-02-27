@@ -12,7 +12,7 @@ namespace Quiztime.Core.Interfaces
         Task<T> GetAsync(Expression<Func<T, bool>> filter = null, params string[] includes);
         Task AddAsync(T entity);
         Task UpdateAsync(T entity);
-        void Delete(T entity);
+        Task DeleteAsync(T entity);
         Task<int> GetTotalCountAsync(Expression<Func<T, bool>> filter = null);
         Task<bool> IsExistAsync(Expression<Func<T, bool>> filter);
     }

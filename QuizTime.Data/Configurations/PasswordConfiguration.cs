@@ -14,6 +14,8 @@ namespace QuizTime.Data.Configurations
 
             builder.HasIndex(x => x.Content)
                 .IsUnique();
+
+            builder.Property(u => u.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
         }
     }
 }

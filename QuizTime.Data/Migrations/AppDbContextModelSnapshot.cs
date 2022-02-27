@@ -322,9 +322,11 @@ namespace QuizTime.Data.Migrations
                         .HasMaxLength(16);
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
 
-                    b.Property<Guid>("QuizId")
+                    b.Property<Guid?>("QuizId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");

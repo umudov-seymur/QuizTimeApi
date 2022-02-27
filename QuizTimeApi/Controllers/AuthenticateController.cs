@@ -4,15 +4,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using NETCore.MailKit.Core;
 using Quiztime.Core.Entities;
+using Quiztime.Core.Enums;
 using QuizTime.Business.DTOs.Authentication;
 using QuizTime.Business.DTOs.StatusCode;
 using QuizTime.Business.DTOs.User;
 using QuizTime.Business.Services.Interfaces;
+using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
-using static QuizTime.Business.Helpers.Helper;
 
 namespace QuizTimeApi.Controllers
 {
@@ -93,7 +94,8 @@ namespace QuizTimeApi.Controllers
         public async Task<ActionResult> Login([FromBody] LoginDto loginDto)
         {
             AppUser user = await _userManager.FindByEmailAsync(loginDto.Email);
-            if (user is null) return NotFound(new Response { Status = "Not Found Account", Message = "There is no such user in the system." });
+            if (user is null)
+                return NotFound(new Response { Status = "Not Found Account", Message = "There is no such user in the system." });
 
             if (!await _userManager.CheckPasswordAsync(user, loginDto.Password))
                 return Unauthorized(new Response { Status = "Error", Message = "Email or Password is not correct" });
@@ -101,7 +103,11 @@ namespace QuizTimeApi.Controllers
             if (user.EmailConfirmed == false)
             {
                 return StatusCode(StatusCodes.Status403Forbidden,
-                        new Response { Status = "Not Verified Email", Message = "Please check your inbox and you confirm account." });
+                        new Response
+                        {
+                            Status = "Not Verified Email",
+                            Message = "Please check your inbox and you confirm account."
+                        });
             }
 
             var userRoles = await _userManager.GetRolesAsync(user);
