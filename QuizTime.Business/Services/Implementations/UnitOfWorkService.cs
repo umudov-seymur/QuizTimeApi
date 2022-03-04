@@ -12,6 +12,8 @@ namespace QuizTime.Business.Services.Implementations
         private readonly IMapper _mapper;
         private IQuizService _quizService;
         private ICategoryService _categoryService;
+        private IQuestionService _questionService;
+        private IAnswerService _answerService;
 
         public UnitOfWorkService(IUnitOfWork unitOfWork, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
@@ -22,5 +24,7 @@ namespace QuizTime.Business.Services.Implementations
 
         public IQuizService QuizService => _quizService ??= new QuizService(_unitOfWork, _mapper, _httpContextAccessor);
         public ICategoryService CategoryService => _categoryService ??= new CategoryService(_unitOfWork, _mapper, _httpContextAccessor);
+        public IQuestionService QuestionService => _questionService ??= new QuestionService(_unitOfWork, _mapper);
+        public IAnswerService AnswerService => _answerService ??= new AnswerService(_unitOfWork, _mapper);
     }
 }

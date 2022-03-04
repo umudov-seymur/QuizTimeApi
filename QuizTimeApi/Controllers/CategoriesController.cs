@@ -81,7 +81,7 @@ namespace QuizTimeApi.Controllers
             try
             {
                 await _unitOfWorkService.CategoryService.DeleteAsync(id);
-                return StatusCode(StatusCodes.Status204NoContent, new Response { Status = "Success", Message = "Category deleted successfull" });
+                return Ok(new Response { Status = "Success", Message = "Category deleted successfull" });
             }
             catch (Exception ex)
             {

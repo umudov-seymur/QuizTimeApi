@@ -8,6 +8,8 @@ namespace Quiztime.Core
         IQuizRepository QuizRepository { get; }
         ICategoryRepository CategoryRepository { get; }
         IPasswordRepository PasswordRepository { get; }
+        IQuestionRepository QuestionRepository { get; }
+        IAnswerRepository AnswerRepository { get; }
         Task SaveChangesAsync();
     }
 }

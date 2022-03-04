@@ -344,7 +344,6 @@ namespace QuizTime.Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("nvarchar(1000)")
                         .HasMaxLength(1000);
 
@@ -359,6 +358,11 @@ namespace QuizTime.Data.Migrations
                         .HasDefaultValue(false);
 
                     b.Property<int>("Order")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
+
+                    b.Property<int>("QuestionType")
                         .HasColumnType("int");
 
                     b.Property<Guid>("QuizId")

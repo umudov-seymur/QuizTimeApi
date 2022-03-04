@@ -9,10 +9,10 @@ namespace QuizTime.Data.Configurations
         public void Configure(EntityTypeBuilder<Question> builder)
         {
             builder.Property(u => u.IsVisited).HasDefaultValue(false);
-            
+            builder.Property(u => u.Order).HasDefaultValue(0);
+
             builder.Property(q => q.Content)
-               .HasMaxLength(1000)
-               .IsRequired();
+               .HasMaxLength(1000);
 
             builder.Property(u => u.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
         }

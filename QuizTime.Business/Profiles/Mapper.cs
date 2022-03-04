@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Quiztime.Core.Entities;
 using QuizTime.Business.DTOs.Category;
+using QuizTime.Business.DTOs.Question;
+using QuizTime.Business.DTOs.Question.Answers;
 using QuizTime.Business.DTOs.Quiz;
 using QuizTime.Business.DTOs.QuizPassword;
 
@@ -21,11 +23,18 @@ namespace QuizTime.Business.Profiles
 
             CreateMap<QuizPasswordGetDto, Password>().ReverseMap();
 
+            CreateMap<Category, CategoryGetForQuizDto>();
             CreateMap<Category, CategoryGetDto>()
                 .ForMember(d => d.QuizCount, opt => opt.MapFrom(src => src.Quizzes.Count));
 
             CreateMap<CategoryPostDto, Category>();
             CreateMap<CategoryPutDto, Category>();
+
+            CreateMap<Question, QuestionGetOfTeacherDto>();
+            CreateMap<QuestionPostDto, Question>();
+
+            CreateMap<Answer, AnswerGetOfTeacherDto>();
+            CreateMap<AnswerPostDto, Answer>();
         }
     }
 }

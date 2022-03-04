@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Quiztime.Core.Entities;
 using QuizTime.Business.DTOs.Quiz;
 using QuizTime.Business.DTOs.StatusCode;
 using QuizTime.Business.Exceptions;
@@ -49,12 +47,12 @@ namespace QuizTimeApi.Controllers
 
         // POST api/Quizzes
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] QuizPostForOwnerDto quizPostDto)
+        public async Task<ActionResult<QuizGetForOwnerDto>> Post([FromBody] QuizPostForOwnerDto quizPostDto)
         {
             try
             {
-                await _unitOfWorkService.QuizService.AddAsync(quizPostDto);
-                return StatusCode(StatusCodes.Status201Created, new Response { Status = "Success", Message = "Quiz created successfull" });
+                var quiz = await _unitOfWorkService.QuizService.AddAsync(quizPostDto);
+                return StatusCode(StatusCodes.Status201Created, quiz);
             }
             catch (Exception ex)
             {
@@ -84,7 +82,7 @@ namespace QuizTimeApi.Controllers
             try
             {
                 await _unitOfWorkService.QuizService.DeleteAsync(id);
-                return StatusCode(StatusCodes.Status204NoContent, new Response { Status = "Success", Message = "Quiz deleted successfull" });
+                return Ok(new Response { Status = "Success", Message = "Quiz deleted successfull" });
             }
             catch (Exception ex)
             {

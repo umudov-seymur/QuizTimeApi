@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Quiztime.Core.Enums;
+using System;
 using System.Collections.Generic;
 
 namespace Quiztime.Core.Entities
@@ -8,6 +9,7 @@ namespace Quiztime.Core.Entities
         public Guid Id { get; set; }
         public Guid QuizId { get; set; }
         public Quiz Quiz { get; set; }
+        public QuestionTypes QuestionType { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
         public int Order { get; set; }

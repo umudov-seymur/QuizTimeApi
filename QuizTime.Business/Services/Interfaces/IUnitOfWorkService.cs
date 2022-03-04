@@ -7,5 +7,7 @@ namespace QuizTime.Business.Services.Interfaces
     {
         IQuizService QuizService { get; }
         ICategoryService CategoryService { get; }
+        IQuestionService QuestionService { get; }
+        IAnswerService AnswerService { get; }
     }
 }
