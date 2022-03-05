@@ -10,7 +10,7 @@ namespace QuizTime.Business.Services.Interfaces
         Task<List<QuestionGetOfTeacherDto>> GetAllQuestionsByQuizIdAsync(Guid quizId);
         Task<QuestionGetOfTeacherDto> GetQuestionByQuizIdAsync(Guid quizId, Guid questionId);
         Task<QuestionGetOfTeacherDto> GetQuestionByIdAsync(Guid questionId);
-        Task AddAsync(QuestionPostDto questionPostDto);
+        Task<QuestionGetOfTeacherDto> AddAsync(QuestionPostDto questionPostDto);
         Task DeleteAsync(Guid id);
     }
 }

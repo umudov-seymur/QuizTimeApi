@@ -48,12 +48,14 @@ namespace QuizTime.Business.Services.Implementations
             return _mapper.Map<QuestionGetOfTeacherDto>(question);
         }
 
-        public async Task AddAsync(QuestionPostDto questionPostDto)
+        public async Task<QuestionGetOfTeacherDto> AddAsync(QuestionPostDto questionPostDto)
         {
             var question = _mapper.Map<Question>(questionPostDto);
 
             await _unitOfWork.QuestionRepository.AddAsync(question);
             await _unitOfWork.SaveChangesAsync();
+
+            return _mapper.Map<QuestionGetOfTeacherDto>(question);
         }
 
         public async Task DeleteAsync(Guid id)

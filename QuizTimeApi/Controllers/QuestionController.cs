@@ -71,9 +71,7 @@ namespace QuizTimeApi.Controllers
                 var quiz = await CheckQuizIsExist(quizId);
                 questionPostDto.QuizId = quiz.Id.ToString();
 
-                await _unitOfWorkService.QuestionService.AddAsync(questionPostDto);
-
-                return StatusCode(StatusCodes.Status201Created, new Response { Status = "Success", Message = "Question created successfull" });
+                return StatusCode(StatusCodes.Status201Created, await _unitOfWorkService.QuestionService.AddAsync(questionPostDto));
             }
             catch (NotFoundException ex)
             {

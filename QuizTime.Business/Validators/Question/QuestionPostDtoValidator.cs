@@ -16,13 +16,12 @@ namespace QuizTime.Business.Validators.Question
             RuleFor(x => x.QuestionType).IsInEnum();
 
             RuleFor(x => x.Content)
-                .MinimumLength(10)
                 .MaximumLength(1000);
 
             RuleFor(x => x.Weight)
                .NotNull()
                .NotEmpty()
-               .InclusiveBetween(1, 100);
+               .InclusiveBetween(0, 100);
 
             //RuleForEach(x => x.Answers).SetValidator(new AnswerPostDtoValidator());
         }
