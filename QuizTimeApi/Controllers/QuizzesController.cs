@@ -51,8 +51,13 @@ namespace QuizTimeApi.Controllers
         {
             try
             {
+                await _unitOfWorkService.CategoryService.GetCategoryByIdAsync(Guid.Parse(quizPostDto.CategoryId));
                 var quiz = await _unitOfWorkService.QuizService.AddAsync(quizPostDto);
                 return StatusCode(StatusCodes.Status201Created, quiz);
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(new Response { Status = "Error", Message = ex.Message.ToString() });
             }
             catch (Exception ex)
             {
