@@ -30,7 +30,7 @@ namespace QuizTime.Business.Services.Implementations
         public async Task<List<QuizGetForOwnerDto>> GetAllQuizzesAsync(QuizQuery query)
         {
             var filters = GetQuizFilters(query);
-            return _mapper.Map<List<QuizGetForOwnerDto>>(await _unitOfWork.QuizRepository.GetAllAsync(filters, "Password", "Category"));
+            return _mapper.Map<List<QuizGetForOwnerDto>>(await _unitOfWork.QuizRepository.GetAllQuizzesAsync());
         }
 
         public async Task<QuizGetForOwnerDto> GetQuizByIdAsync(Guid id)
