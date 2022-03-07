@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using QuizTime.Business.DTOs.Question;
 using QuizTime.Business.DTOs.Quiz;
@@ -86,6 +87,21 @@ namespace QuizTimeApi.Controllers
         [HttpPut("{questionId:guid}")]
         public void Put(int id, [FromBody] string value)
         {
+        }
+
+        // PATCH: api/quizzes/{quizId:guid}/questions/UpdateOrder
+        [HttpPatch("UpdateOrder")]
+        public async Task<ActionResult> UpdateOrder(Guid quizId, [FromBody] List<QuestionOrderPatchDto> sortedQuestionsDto)
+        {
+            try
+            {
+                await _unitOfWorkService.QuestionService.UpdateOrderByQuizIdAsync(quizId, sortedQuestionsDto);
+                return StatusCode(StatusCodes.Status201Created, new Response { Status = "Success", Message = "Questions sorted successfull." });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new Response { Status = "Error", Message = ex.Message.ToString() });
+            }
         }
 
         // GET api/quizzes/{quizId:guid}/questions/{questionId:guid}

@@ -36,8 +36,9 @@ namespace QuizTimeApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers().AddFluentValidation(x =>
-                    x.RegisterValidatorsFromAssemblyContaining<LoginDtoValidator>());
+            services.AddControllers()
+                    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<LoginDtoValidator>())
+                    .AddNewtonsoftJson();
 
             services.AddCors(options =>
             {

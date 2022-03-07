@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DAxhyVw7RDL5CToV0844nKu55xsZFb+ESw1AlmN6Xrko7pKTSb7vSgq/eJ5+gYiYxaoKMoU2INYpc+zOwMWx4Q==",
+  "dgSpecHash": "CNGcdh5v/XeiEQATjr3gkIbTfefLiSd2u0gu3VexOmmAQLvCjqgR6iQsXnME5FEsFt5K8pi1Xb6LmIJyyEZt5g==",
   "success": true,
   "projectFilePath": "C:\\laragon\\www\\QuizTimeApi\\QuizTimeApi\\QuizTimeApi.csproj",
   "expectedPackageFiles": [
@@ -15,6 +15,8 @@
     "C:\\Users\\useym\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.22\\microsoft.aspnetcore.cryptography.keyderivation.3.1.22.nupkg.sha512",
     "C:\\Users\\useym\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\3.1.22\\microsoft.aspnetcore.identity.entityframeworkcore.3.1.22.nupkg.sha512",
     "C:\\Users\\useym\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\3.1.22\\microsoft.aspnetcore.identity.ui.3.1.22.nupkg.sha512",
+    "C:\\Users\\useym\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.22\\microsoft.aspnetcore.jsonpatch.3.1.22.nupkg.sha512",
+    "C:\\Users\\useym\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.22\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.22.nupkg.sha512",
     "C:\\Users\\useym\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\useym\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.1\\microsoft.bcl.hashcode.1.1.1.nupkg.sha512",
     "C:\\Users\\useym\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
@@ -53,6 +55,7 @@
     "C:\\Users\\useym\\.nuget\\packages\\mimekit\\2.6.0\\mimekit.2.6.0.nupkg.sha512",
     "C:\\Users\\useym\\.nuget\\packages\\netcore.mailkit\\2.0.3\\netcore.mailkit.2.0.3.nupkg.sha512",
     "C:\\Users\\useym\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\useym\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\useym\\.nuget\\packages\\portable.bouncycastle\\1.8.5\\portable.bouncycastle.1.8.5.nupkg.sha512",
     "C:\\Users\\useym\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "C:\\Users\\useym\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",

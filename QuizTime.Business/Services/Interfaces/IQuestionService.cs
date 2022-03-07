@@ -11,6 +11,7 @@ namespace QuizTime.Business.Services.Interfaces
         Task<QuestionGetOfTeacherDto> GetQuestionByQuizIdAsync(Guid quizId, Guid questionId);
         Task<QuestionGetOfTeacherDto> GetQuestionByIdAsync(Guid questionId);
         Task<QuestionGetOfTeacherDto> AddAsync(QuestionPostDto questionPostDto);
+        Task UpdateOrderByQuizIdAsync(Guid quizId, List<QuestionOrderPatchDto> questionsOrderDto);
         Task DeleteAsync(Guid id);
     }
 }

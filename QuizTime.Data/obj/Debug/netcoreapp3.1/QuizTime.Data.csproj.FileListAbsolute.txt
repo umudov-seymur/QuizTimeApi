@@ -13,4 +13,3 @@ C:\laragon\www\QuizTimeApi\QuizTime.Data\obj\Debug\netcoreapp3.1\QuizTime.Data.p
 C:\laragon\www\QuizTimeApi\QuizTime.Data\bin\Debug\netcoreapp3.1\QuizTime.Data.runtimeconfig.json
 C:\laragon\www\QuizTimeApi\QuizTime.Data\bin\Debug\netcoreapp3.1\QuizTime.Data.runtimeconfig.dev.json
 C:\laragon\www\QuizTimeApi\QuizTime.Data\obj\Debug\netcoreapp3.1\QuizTime.Data.genruntimeconfig.cache
-C:\laragon\www\QuizTimeApi\QuizTime.Data\obj\Debug\netcoreapp3.1\QuizTime.Data.csproj.CopyComplete
