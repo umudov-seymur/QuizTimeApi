@@ -2,8 +2,10 @@
 using Quiztime.Core.Entities;
 using Quiztime.Core.Interfaces;
 using QuizTime.Data.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace QuizTime.Data.Implementations
@@ -16,13 +18,16 @@ namespace QuizTime.Data.Implementations
             _context = context;
         }
 
-        public async Task<List<Quiz>> GetAllQuizzesAsync()
+        public async Task<List<Quiz>> GetAllQuizzesAsync(Expression<Func<Quiz, bool>> filter = null)
         {
-            return await _context.Quizzes
+            var quizzes = _context.Quizzes
                 .Include(n => n.Password)
                 .Include(n => n.Category)
-                .OrderByDescending(n => n.CreatedAt)
-                .ToListAsync();
+                .OrderByDescending(n => n.CreatedAt);
+
+            return filter is null
+                   ? await quizzes.ToListAsync()
+                   : await quizzes.Where(filter).ToListAsync();
         }
     }
 }
