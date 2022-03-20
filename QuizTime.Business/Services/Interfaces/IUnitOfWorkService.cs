@@ -1,7 +1,4 @@
-﻿using Quiztime.Core.Interfaces;
-using System.Threading.Tasks;
-
-namespace QuizTime.Business.Services.Interfaces
+﻿namespace QuizTime.Business.Services.Interfaces
 {
     public interface IUnitOfWorkService
     {
@@ -9,5 +6,8 @@ namespace QuizTime.Business.Services.Interfaces
         ICategoryService CategoryService { get; }
         IQuestionService QuestionService { get; }
         IAnswerService AnswerService { get; }
+        IQuizSettingService QuizSettingService { get; }
+        IResultService ResultService { get; }
+        IResultAnswerService ResultAnswerService { get; }
     }
 }

@@ -2,7 +2,6 @@
 using AutoMapper;
 using Quiztime.Core;
 using Quiztime.Core.Entities;
-using QuizTime.Business.Exceptions;
 using QuizTime.Business.Services.Interfaces;
 using System.Threading.Tasks;
 using QuizTime.Business.DTOs.Question.Answers;
@@ -33,16 +32,6 @@ namespace QuizTime.Business.Services.Implementations
             var answers = _mapper.Map<List<Answer>>(answersPostDto);
             await _unitOfWork.AnswerRepository.AddRangeAsync(answers);
             await _unitOfWork.SaveChangesAsync();
-        }
-
-        public Task DeleteAsync(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<AnswerGetOfTeacherDto> GetAnswerByIdAsync(Guid id)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using Quiztime.Core.Entities;
 using QuizTime.Business.DTOs.Quiz;
+using QuizTime.Business.DTOs.Result;
 
 namespace QuizTime.Business.Validators.Quiz
 {
