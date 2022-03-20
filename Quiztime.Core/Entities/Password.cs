@@ -9,7 +9,6 @@ namespace Quiztime.Core.Entities
         public string Content { get; set; }
         public Guid? QuizId { get; set; }
         public Quiz Quiz { get; set; }
-
         public DateTime CreatedAt { get; set; }
     }
 }
