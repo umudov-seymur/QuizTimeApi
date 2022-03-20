@@ -6,7 +6,6 @@ using QuizTime.Business.Exceptions;
 using QuizTime.Business.Services.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace QuizTimeApi.Controllers
@@ -20,21 +19,6 @@ namespace QuizTimeApi.Controllers
         public AnswersController(IUnitOfWorkService unitOfWorkService)
         {
             _unitOfWorkService = unitOfWorkService;
-        }
-
-        // GET: api/questions/<questionId>/answers
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/questions/<questionId>/answers/<answerId>
-        [HttpGet("{answerId:guid}")]
-        public string Get(Guid questionId, [FromRoute] Guid answerId)
-        {
-
-            return questionId.ToString();
         }
 
         // POST api/questions/<questionId>/answers
@@ -56,18 +40,6 @@ namespace QuizTimeApi.Controllers
             {
                 return BadRequest(new Response { Status = "Error", Message = ex.Message.ToString() });
             }
-        }
-
-        // PUT api/questions/<questionId>/5
-        [HttpPut("{answerId:guid}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/questions/<questionId>/5
-        [HttpDelete("{answerId:guid}")]
-        public void Delete(int id)
-        {
         }
     }
 }
