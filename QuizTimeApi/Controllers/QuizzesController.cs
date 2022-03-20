@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using QuizTime.Business.DTOs.Quiz;
+using QuizTime.Business.DTOs.Quiz.Setting;
 using QuizTime.Business.DTOs.StatusCode;
 using QuizTime.Business.Exceptions;
 using QuizTime.Business.Queries;
@@ -31,7 +32,7 @@ namespace QuizTimeApi.Controllers
             return await _unitOfWorkService.QuizService.GetAllQuizzesAsync(query);
         }
 
-        // GET api/Quizzes/5
+        // GET api/Quizzes/<Guid>
         [HttpGet("{id:guid}")]
         public async Task<ActionResult<QuizGetForOwnerDto>> GetAsync(Guid id)
         {
@@ -65,7 +66,7 @@ namespace QuizTimeApi.Controllers
             }
         }
 
-        // PUT api/Quizzes/5
+        // PUT api/Quizzes/<Guid>
         [HttpPut("{id:guid}")]
         public async Task<ActionResult<QuizGetForOwnerDto>> Put(Guid id, [FromBody] QuizPutForOwnerDto quizPutDto)
         {
@@ -80,7 +81,22 @@ namespace QuizTimeApi.Controllers
             }
         }
 
-        // DELETE api/Quizzes/5
+        // PUT api/Quizzes/<Guid>/settings
+        [HttpPut("{id:guid}/settings")]
+        public async Task<ActionResult> UpdateSetting(Guid id, [FromBody] QuizSettingPutDto settingPutDto)
+        {
+            try
+            {
+                await _unitOfWorkService.QuizSettingService.UpdateSettingsByQuizIdAsync(id, settingPutDto);
+                return Ok(new Response { Status = "Success", Message = "Settings update successfull" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new Response { Status = "Error", Message = ex.Message.ToString() });
+            }
+        }
+
+        // DELETE api/Quizzes/<Guid>
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> DeleteAsync(Guid id)
         {
@@ -92,6 +108,22 @@ namespace QuizTimeApi.Controllers
             catch (Exception ex)
             {
                 return BadRequest(new Response { Status = "Error", Message = ex.Message.ToString() });
+            }
+        }
+
+
+        // GET api/Quizzes/<password>
+        [HttpGet("{password}")]
+        [Authorize(Roles = "Student, Teacher")]
+        public async Task<ActionResult<QuizGetForStudent>> GetQuizByPasswordAsync([FromRoute] string password)
+        {
+            try
+            {
+                return await _unitOfWorkService.QuizService.GetQuizByPasswordAsync(password);
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(new Response { Status = "Error", Message = ex.Message.ToString() });
             }
         }
     }
