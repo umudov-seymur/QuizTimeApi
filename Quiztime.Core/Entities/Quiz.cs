@@ -15,6 +15,7 @@ namespace Quiztime.Core.Entities
         public Category Category { get; set; }
         public int PasswordId { get; set; }
         public Password Password { get; set; }
+        public QuizSetting Setting { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
 

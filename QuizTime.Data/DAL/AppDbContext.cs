@@ -18,6 +18,11 @@ namespace QuizTime.Data.DAL
             modelBuilder.ApplyConfiguration(new QuestionConfiguration());
             modelBuilder.ApplyConfiguration(new AnswerConfiguration());
             modelBuilder.ApplyConfiguration(new PasswordConfiguration());
+            modelBuilder.ApplyConfiguration(new PasswordConfiguration());
+            modelBuilder.ApplyConfiguration(new QuizSettingConfiguration());
+            modelBuilder.ApplyConfiguration(new ResultConfiguration());
+            modelBuilder.ApplyConfiguration(new ResultAnswerConfiguration());
+
             base.OnModelCreating(modelBuilder);
         }
 
@@ -26,5 +31,8 @@ namespace QuizTime.Data.DAL
         public DbSet<Question> Questions { get; set; }
         public DbSet<Answer> Answers { get; set; }
         public DbSet<Password> Passwords { get; set; }
+        public DbSet<QuizSetting> QuizSettings { get; set; }
+        public DbSet<Result> Results { get; set; }
+        public DbSet<ResultAnswer> ResultAnswers { get; set; }
     }
 }

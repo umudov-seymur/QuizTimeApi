@@ -12,6 +12,10 @@ namespace QuizTime.Data.Configurations
                 .WithOne(p => p.Quiz)
                 .HasForeignKey<Quiz>(q => q.PasswordId);
 
+            builder.HasOne(q => q.Setting)
+              .WithOne(p => p.Quiz)
+              .HasForeignKey<QuizSetting>(q => q.QuizId);
+
             builder.Property(u => u.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
         }
     }
