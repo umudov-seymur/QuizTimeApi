@@ -9,5 +9,6 @@ namespace Quiztime.Core.Interfaces
     public interface IQuizRepository : IRepository<Quiz>
     {
         public Task<List<Quiz>> GetAllQuizzesAsync(Expression<Func<Quiz, bool>> filter = null);
+        public Task<Quiz> GetQuizByPasswordAsync(string password, params string[] includes);
     }
 }

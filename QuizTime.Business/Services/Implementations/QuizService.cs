@@ -9,6 +9,7 @@ using QuizTime.Business.Queries;
 using QuizTime.Business.Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
@@ -38,6 +39,37 @@ namespace QuizTime.Business.Services.Implementations
             return _mapper.Map<QuizGetForOwnerDto>(await GetQuizOfOwner(id));
         }
 
+        public async Task<QuizGetForStudent> GetQuizByPasswordAsync(string password)
+        {
+            var quiz = await _unitOfWork.QuizRepository.GetQuizByPasswordAsync(password, "Password", "Category", "Setting", "Questions");
+
+            if (quiz is null) throw new NotFoundException("No quizzes found for this password");
+
+            var mappedQuiz = _mapper.Map<QuizGetForStudent>(quiz);
+            var quizResult = await GetAlreadyProgressResultAsync(quiz);
+
+            if (!(quizResult is null)) mappedQuiz.StartedAt = quizResult.StartedAt;
+
+            return mappedQuiz;
+        }
+
+        public async Task<QuizGetOfJoinedStudentDto> GetQuizForJoinedStudentAsync(string password)
+        {
+            var quiz = await _unitOfWork.QuizRepository.GetQuizByPasswordAsync(password, "Password", "Category", "Setting");
+
+            if (quiz is null) throw new NotFoundException("No quizzes found for this password");
+
+            quiz.Questions = await _unitOfWork.QuestionRepository.GetAllQuestionsByQuizIdAsync(quiz.Id);
+
+            var quizResult = await GetAlreadyProgressResultAsync(quiz);
+            if (quizResult is null) throw new NotFoundException("No results were found for this quiz");
+
+            var mappedQuiz = _mapper.Map<QuizGetOfJoinedStudentDto>(quiz);
+            mappedQuiz.TotalPoint = quiz.Questions.Select(d => d.Weight).Sum();
+            mappedQuiz.StartedAt = quizResult.StartedAt;
+
+            return mappedQuiz;
+        }
         public async Task<QuizGetForOwnerDto> AddAsync(QuizPostForOwnerDto quizPostDto)
         {
             var quiz = _mapper.Map<Quiz>(quizPostDto);
@@ -52,6 +84,8 @@ namespace QuizTime.Business.Services.Implementations
             var quizPasswordEntity = new Password() { Content = quizPassword, QuizId = quiz.Id };
             await _unitOfWork.PasswordRepository.AddAsync(quizPasswordEntity);
             quiz.Password = quizPasswordEntity;
+
+            quiz.Setting = new QuizSetting { QuizId = quiz.Id };
 
             await _unitOfWork.SaveChangesAsync();
 
@@ -112,11 +146,23 @@ namespace QuizTime.Business.Services.Implementations
             var ownerId = _httpContextAccessor.HttpContext.User.GetUserId();
 
             var quiz = await _unitOfWork.QuizRepository
-                    .GetAsync(quiz => quiz.Id == id && quiz.OwnerId == ownerId, "Password");
+                    .GetAsync(quiz => quiz.Id == id && quiz.OwnerId == ownerId, "Password", "Category", "Setting", "Questions");
 
             if (quiz is null) throw new NotFoundException("Quiz could not found");
 
             return quiz;
+        }
+
+        private async Task<Result> GetAlreadyProgressResultAsync(Quiz quiz)
+        {
+            var ownerId = _httpContextAccessor.HttpContext.User.GetUserId();
+            var studentResult = await _unitOfWork.ResultRepository.GetLastResultAsync(q => q.QuizId == quiz.Id && q.OwnerId == ownerId);
+
+            if (studentResult is null) return null;
+
+            var diffQuizStartedAt = (DateTime.Now - studentResult.StartedAt).TotalMinutes;
+
+            return quiz.Timer > diffQuizStartedAt ? studentResult : null;
         }
     }
 }

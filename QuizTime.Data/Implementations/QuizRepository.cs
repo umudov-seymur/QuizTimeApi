@@ -23,11 +23,17 @@ namespace QuizTime.Data.Implementations
             var quizzes = _context.Quizzes
                 .Include(n => n.Password)
                 .Include(n => n.Category)
+                .Include(n => n.Questions)
                 .OrderByDescending(n => n.CreatedAt);
 
             return filter is null
                    ? await quizzes.ToListAsync()
                    : await quizzes.Where(filter).ToListAsync();
+        }
+
+        public async Task<Quiz> GetQuizByPasswordAsync(string password, params string[] includes)
+        {
+            return await GetAsync(x => x.Password.Content == password, includes);
         }
     }
 }
